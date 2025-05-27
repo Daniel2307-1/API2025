@@ -13,4 +13,7 @@ export const sql =  createPool({
   user: BD_USER,
   password: BD_PASSWORD,
   port: BD_PORT,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
