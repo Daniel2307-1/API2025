@@ -3,6 +3,7 @@ import { postClientes } from './Controladores/clientesCtrl.js';
 import clientesRoutes from './Routes/clientes.routes.js'
 import catalogoRoutes from './Routes/catalogo.routes.js'
 import pedidosRoutes from './Routes/pedidos.routes.js'
+import pedidodetalleRoutes from './Routes/pedidodetalle.routes.js'
 
 import cors from 'cors'
 
@@ -22,7 +23,7 @@ app.use('/api', clientesRoutes)
 app.post('/clientes', postClientes);
 app.use('/api', catalogoRoutes)
 app.use('/api', pedidosRoutes)
-
+app.use('/api', pedidodetalleRoutes)
 
 
 
