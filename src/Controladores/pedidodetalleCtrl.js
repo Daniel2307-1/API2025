@@ -5,7 +5,7 @@ export const enviarmensajedebasededatos=(req,res)=>{
 export const postDetalle = async (req, res) => {
   try {
     const { prod_id, ped_id, det_cantidad, det_precio } = req.body;
-    const [result] = await conmysql.query(
+    const [result] = await sql.query(
       'INSERT INTO pedidos_detalle (prod_id, ped_id, det_cantidad, det_precio) VALUES (?, ?, ?, ?)',
       [prod_id, ped_id, det_cantidad, det_precio]
     );
