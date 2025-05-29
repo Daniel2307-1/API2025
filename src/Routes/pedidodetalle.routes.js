@@ -3,6 +3,6 @@ import {postDetalle,obetenerdatos } from '../Controladores/pedidodetalleCtrl.js'
 
 const router = express.Router();
 router.post('/detalle/',postDetalle)
-router.post('/detalle',obetenerdatos)
+router.get('/detalle',obetenerdatos)
 
 export default router
