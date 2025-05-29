@@ -2,23 +2,23 @@ import{sql} from '../bd.js'
 export const enviarmensajedebasededatos=(req,res)=>{
     res.send('Lista de pedidos');
 }
-export const obetenerdatos = async (req, res) => {
+export const obtenerUltimoPedido = async (req, res) => {
     try {
-        const [result] = await sql.query('SELECT * FROM pedidos');
-        res.json({ cant: result.length, data: result });
-    }catch (error) {
-            console.error('Error al obtener datos:', error);
-            return res.status(500).json({
-                message: "Error en el servidor",
-                error: {
-                    message: error.message,
-                    code: error.code,
-                    stack: error.stack
-                }
-            });
+        const [result] = await sql.query('SELECT * FROM pedidos ORDER BY ped_id DESC LIMIT 1');
+        res.json({ data: result[0] });  // solo devolvemos el último
+    } catch (error) {
+        console.error('Error al obtener el último pedido:', error);
+        return res.status(500).json({
+            message: "Error en el servidor",
+            error: {
+                message: error.message,
+                code: error.code,
+                stack: error.stack
+            }
+        });
     }
-    
-}
+};
+
 export const obtenerpedidosxid=async(req,res)=>{
     try{
         const ID=req.params.id
