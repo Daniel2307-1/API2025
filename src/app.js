@@ -1,6 +1,8 @@
 import express from 'express'
 import { postClientes } from './Controladores/clientesCtrl.js';
 import clientesRoutes from './Routes/clientes.routes.js'
+import catalogoRoutes from './Routes/catalogo.routes.js'
+
 import cors from 'cors'
 
 
@@ -17,6 +19,9 @@ app.use(express.json());
 //indicar que rutas se utiliza ojo
 app.use('/api', clientesRoutes)
 app.post('/clientes', postClientes);
+app.use('/api', catalogoRoutes)
+
+
 
 app.use((req,resp,next)=>{
     resp.status(400).json({
