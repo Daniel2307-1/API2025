@@ -1,7 +1,8 @@
 import express from 'express';
-import {postDetalle} from '../Controladores/pedidodetalleCtrl.js'
+import {postDetalle,obetenerdatos } from '../Controladores/pedidodetalleCtrl.js'
 
 const router = express.Router();
 router.post('/detalle/',postDetalle)
+router.post('/detalle',obetenerdatos)
 
 export default router
