@@ -35,7 +35,7 @@ export const obtenerpedidosxid=async(req,res)=>{
 export const postPedido = async (req, res) => {
   try {
     const { cli_id, ped_fecha, usr_id, ped_estado } = req.body;
-    const [result] = await conmysql.query(
+    const [result] = await sql.query(
       'INSERT INTO pedidos (cli_id, ped_fecha, usr_id, ped_estado) VALUES (?, ?, ?, ?)' ,
       [cli_id, ped_fecha, usr_id, ped_estado]
     );
