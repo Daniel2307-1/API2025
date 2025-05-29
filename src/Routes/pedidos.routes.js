@@ -4,6 +4,6 @@ import {obetenerdatos,obtenerpedidosxid, postPedido} from '../Controladores/pedi
 const router = express.Router();
 router.get('/pedidos',obetenerdatos)
 router.get('/pedidos/:id',obtenerpedidosxid)
-router.post('/pedidos/',postPedido)
+router.post('/pedidosA/',postPedido)
 
 export default router
