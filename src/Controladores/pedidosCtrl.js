@@ -2,7 +2,7 @@ import{sql} from '../bd.js'
 export const enviarmensajedebasededatos=(req,res)=>{
     res.send('Lista de pedidos');
 }
-export const obtenerUltimoPedido = async (req, res) => {
+export const obetenerdatos  = async (req, res) => {
     try {
         const [result] = await sql.query('SELECT * FROM pedidos ORDER BY ped_id DESC LIMIT 1');
         res.json({ data: result[0] });  // solo devolvemos el último
