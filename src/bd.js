@@ -6,7 +6,6 @@ import {
   BD_PASSWORD,
   BD_PORT
 } from './config.js';
-
 export const sql =  createPool({
   host: BD_HOST,
   database: BD_DATABASE,
