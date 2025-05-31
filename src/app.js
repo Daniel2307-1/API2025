@@ -36,23 +36,22 @@ app.use('/uploads', express.static(path.resolve('uploads')))
 // Configuración de almacenamiento de imágenes con Multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/uploads/') // Carpeta donde se guardarán las imágenes
+    cb(null, 'uploads/'); // carpeta para guardar archivos
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname) // Mantener el nombre original
+    cb(null, Date.now() + '-' + file.originalname);
   }
-})
+});
 
 const upload = multer({ storage })
 
-// ✅ Ruta para subir imagen
+
 app.post('/uploads', upload.single('file'), (req, res) => {
   if (!req.file) {
-    return res.status(400).json({ message: 'No se subió ningún archivo' });
+    return res.status(400).send('No file uploaded.');
   }
-  res.status(200).json({ nombreArchivo: req.file.filename });
+  res.json({ message: 'Archivo subido correctamente', filename: req.file.filename });
 });
-
 
 // Manejo de rutas no encontradas (debe ir al final)
 app.use((req, res, next) => {
