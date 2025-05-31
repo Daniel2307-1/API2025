@@ -4,6 +4,8 @@ import clientesRoutes from './Routes/clientes.routes.js'
 import catalogoRoutes from './Routes/catalogo.routes.js'
 import pedidosRoutes from './Routes/pedidos.routes.js'
 import pedidodetalleRoutes from './Routes/pedidodetalle.routes.js'
+import productosRoutes from './Routes/productos.routes.js'
+
 import path from 'path';
 import cors from 'cors'
 
@@ -25,6 +27,7 @@ app.use('/api', catalogoRoutes)
 app.use('/api', pedidosRoutes)
 app.use('/api', pedidodetalleRoutes)
 app.use('/uploads', express.static(path.resolve('uploads')));
+app.use('/api', productosRoutes)
 
 
 
