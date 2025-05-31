@@ -7,7 +7,7 @@ export const postProducto = async (req, res) => {
     const { prod_codigo, prod_nombre, prod_stock, prod_precio, prod_activo, prod_imagen } = req.body;
 
     const [result] = await sql.query(
-      `INSERT INTO producto (prod_codigo, prod_nombre, prod_stock, prod_precio, prod_activo, prod_imagen)
+      `INSERT INTO productos (prod_codigo, prod_nombre, prod_stock, prod_precio, prod_activo, prod_imagen)
        VALUES (?, ?, ?, ?, ?, ?)`,
       [prod_codigo, prod_nombre, prod_stock, prod_precio, prod_activo, prod_imagen]
     );
