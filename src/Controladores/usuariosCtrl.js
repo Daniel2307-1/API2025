@@ -8,7 +8,7 @@ export const obetenerdatosA = async (req, res) => {
 
   try {
     const [result] = await sql.query(
-      'SELECT * FROM usuarios WHERE usr_usuario = ? AND usr_clave = ? ',
+      'SELECT * FROM usuarios WHERE usr_usuario = ',
       [usuario, clave]
     );
 
