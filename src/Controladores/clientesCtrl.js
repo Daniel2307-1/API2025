@@ -108,10 +108,10 @@ export const patchclientes = async (req, res) => {
     export const putClientes = async (req,res) => {
     try {
         const {id}= req.params
-       const {cli_identificacion, cli_nombre, cli_telefono, cli_correo, cli_direccion, cli_pais, cli_ciudad}= req.body 
+       const {cli_identificacion, cli_nombre, cli_telefono, cli_correo, cli_direccion, cli_pais, cli_ciudad,cli_estado}= req.body 
        const [result] = await sql.query(
-        'UPDATE clientes SET cli_identificacion=?, cli_nombre=?, cli_telefono=?, cli_correo=?, cli_direccion=?, cli_pais=?, cli_ciudad=? WHERE cli_id=?',
-        [cli_identificacion, cli_nombre, cli_telefono, cli_correo, cli_direccion, cli_pais, cli_ciudad,id]);
+        'UPDATE clientes SET cli_identificacion=?, cli_nombre=?, cli_telefono=?, cli_correo=?, cli_direccion=?, cli_pais=?, cli_ciudad=?, cli_estado=? WHERE cli_id=?',
+        [cli_identificacion, cli_nombre, cli_telefono, cli_correo, cli_direccion, cli_pais, cli_ciudad,cli_estado,id]);
         if(result.affectedRows<=0)return res.status(400).json({
             message: "cliente no encontrado"
         })
