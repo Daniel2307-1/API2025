@@ -1,6 +1,6 @@
 import{sql} from '../bd.js'
 export const enviarmensajedebasededatos=(req,res)=>{
-    res.send('Lista de pedido Detalles');
+    res.send('Lista de productos');
 }
 export const postProducto = async (req, res) => {
   try {
