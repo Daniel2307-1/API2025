@@ -4,23 +4,31 @@ export const enviarmensajedebasededatos = (req, res) => {
     res.send('Lista de usuarios');
 };
 export const obetenerdatosA = async (req, res) => {
-  const { usuario, clave } = req.params;
+ const { usuario, clave } = req.params;
 
   try {
     const [result] = await sql.query(
-      'SELECT * FROM usuarios WHERE usuario = ? AND clave = ?',
+      'SELECT * FROM usuarios WHERE usr_usuario = ? AND usr_clave = ? ',
       [usuario, clave]
     );
-    res.json({ cant: result.length, data: result });
+
+    if (result.length > 0) {
+      res.json({
+        success: true,
+        usuario: result[0]
+      });
+    } else {
+      res.json({
+        success: false,
+        message: 'Usuario o clave incorrectos'
+      });
+    }
+
   } catch (error) {
-    console.error('Error al obtener datos:', error);
+    console.error('Error en login:', error);
     return res.status(500).json({
       message: "Error en el servidor",
-      error: {
-        message: error.message,
-        code: error.code,
-        stack: error.stack
-      }
+      error: error.message
     });
   }
 };
