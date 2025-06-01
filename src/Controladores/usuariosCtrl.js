@@ -8,7 +8,7 @@ export const obetenerdatosA = async (req, res) => {
 
   try {
     const [result] = await sql.query(
-      'SELECT * FROM usuarios WHERE usr_usuario = ?',
+      'SELECT * FROM usuarios WHERE usr_usuario = ? LIMIT 1',
       [usuario]
     );
 
