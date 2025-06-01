@@ -4,12 +4,12 @@ export const enviarmensajedebasededatos = (req, res) => {
     res.send('Lista de usuarios');
 };
 export const obetenerdatosA = async (req, res) => {
- const { usuario} = req.params;
+ const { usuario, clave} = req.params;
 
   try {
     const [result] = await sql.query(
-      'SELECT * FROM usuarios WHERE usr_usuario = ? LIMIT 1',
-      [usuario]
+      'SELECT * FROM usuarios WHERE usr_usuario = ? AND usr_clave = ? LIMIT 1',
+      [usuario, clave]
     );
 
     if (result.length > 0) {
