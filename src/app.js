@@ -3,7 +3,7 @@ import { postClientes } from './Controladores/clientesCtrl.js';
 import clientesRoutes from './Routes/clientes.routes.js'
 import catalogoRoutes from './Routes/catalogo.routes.js'
 import pedidosRoutes from './Routes/pedidos.routes.js'
-import usuariosRoutes from './Routes/usuarios.routes.js'
+import usuarioRoutes from './Routes/usuarios.routes.js'
 import pedidodetalleRoutes from './Routes/pedidodetalle.routes.js'
 import productosRoutes from './Routes/productos.routes.js'
 import path from 'path';
@@ -30,7 +30,7 @@ app.use('/api', catalogoRoutes)
 app.use('/api', pedidosRoutes)
 app.use('/api', pedidodetalleRoutes)
 app.use('/api', productosRoutes)
-app.use('/api', usuariosRoutes)
+app.use('/api', usuarioRoutes)
 // Middleware para servir imágenes estáticas
 app.use('/uploads', express.static(path.resolve('uploads')))
 
