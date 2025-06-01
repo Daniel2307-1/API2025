@@ -48,3 +48,43 @@ export const obetenerdatos = async (req, res) => {
         });
     }
 };
+export const postUsuarios = async (req, res) => {
+  try {
+    const {
+      usr_usuario,
+      usr_clave,
+      usr_nombre,
+      usr_telefono,
+      usr_correo,
+      usr_activo
+    } = req.body;
+
+    // Validación básica de campos obligatorios
+    if (!usr_usuario || !usr_clave || !usr_nombre || usr_activo === undefined) {
+      return res.status(400).json({ message: "Faltan campos obligatorios" });
+    }
+
+    const [result] = await sql.query(
+      `INSERT INTO usuarios 
+      (usr_usuario, usr_clave, usr_nombre, usr_telefono, usr_correo, usr_activo)
+      VALUES (?, ?, ?, ?, ?, ?)`,
+      [usr_usuario, usr_clave, usr_nombre, usr_telefono, usr_correo, usr_activo]
+    );
+
+    res.send({
+      id: result.insertId,
+      message: "Usuario registrado con éxito"
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error en el servidor",
+      error: {
+        message: error.message,
+        code: error.code,
+        stack: error.stack
+      }
+    });
+  }
+};
+
