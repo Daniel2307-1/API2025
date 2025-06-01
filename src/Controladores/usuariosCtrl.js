@@ -4,12 +4,12 @@ export const enviarmensajedebasededatos = (req, res) => {
     res.send('Lista de usuarios');
 };
 export const obetenerdatosA = async (req, res) => {
- const { usuario, clave } = req.params;
+ const { usuario} = req.params;
 
   try {
     const [result] = await sql.query(
       'SELECT * FROM usuarios WHERE usr_usuario = ',
-      [usuario, clave]
+      [usuario]
     );
 
     if (result.length > 0) {
