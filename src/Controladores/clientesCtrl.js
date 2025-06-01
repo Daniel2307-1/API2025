@@ -35,11 +35,11 @@ export const obtenerclientesxid=async(req,res)=>{
 
 export const postClientes=async(req,res)=>{
     try{
-        const{cli_identificacion, cli_nombre, cli_telefono, cli_correo, cli_direccion, cli_pais, cli_ciudad}=req.body
+        const{cli_identificacion, cli_nombre, cli_telefono, cli_correo, cli_direccion, cli_pais, cli_ciudad,cli_estado}=req.body
         //console.log(req.body)
         const [result]= await sql.query(
-            ' INSERT INTO clientes (cli_identificacion, cli_nombre, cli_telefono, cli_correo, cli_direccion, cli_pais, cli_ciudad) VALUES(?, ?, ?, ?, ?, ?, ?) ', 
-            [cli_identificacion, cli_nombre, cli_telefono, cli_correo, cli_direccion, cli_pais, cli_ciudad])
+            ' INSERT INTO clientes (cli_identificacion, cli_nombre, cli_telefono, cli_correo, cli_direccion, cli_pais, cli_ciudad,cli_estado) VALUES(?, ?, ?, ?, ?, ?, ?,?) ', 
+            [cli_identificacion, cli_nombre, cli_telefono, cli_correo, cli_direccion, cli_pais, cli_ciudad,cli_estado])
             res.send({
                 id:result.insertId
             })
